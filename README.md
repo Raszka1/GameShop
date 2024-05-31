@@ -22,12 +22,13 @@ Aplikacja została zaprojektowana w środowisku Apache NetBeans i korzysta z Mav
 ## Uruchomienie-Aplikacji
 1. Ściągnij i zainstaluj Apache NetBeans (jeżeli jeszcze nie posiadasz).
 
-2. Klonuj repozytorium:
+2. Klonuj repozytorium: <br>
 ``` git clone https://github.com/Raszka1/GameShop.git```
 
 3. Otwórz projekt w NetBeans:
 
-Wybierz File > Open Project i znajdź pobrany projekt.
-Uruchom projekt:
+Wybierz plik > Otwórz projekt i znajdź pobrany projekt.
+
+4. Uruchom projekt:
 
 W NetBeans kliknij prawym przyciskiem myszy na projekt w Projects i wybierz Run.
