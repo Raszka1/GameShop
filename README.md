@@ -11,11 +11,11 @@
 Projekt GameShop to aplikacja desktopowa stworzona w Apache NetBeans, umożliwiająca zarządzanie zbiorem gier. Aplikacja jest zaprojektowana tak, aby ułatwić użytkownikom przeglądanie, dodawanie, edytowanie oraz usuwanie danych związanych z grami.
 
 ## Spis-Funkcjonalności
-- Przeglądanie Zasobów: Użytkownicy mogą przeglądać listę dostępnych gier.
-- Dodawanie Nowych Pozycji: Możliwość dodawania nowych gier do bazy danych.
-- Edycja Istniejących Pozycji: Użytkownicy mogą aktualizować informacje o grach.
-- Usuwanie Pozycji: Funkcja umożliwiająca usuwanie gier z bazy danych.
-- Wyszukiwanie: Możliwość wyszukiwania gier na podstawie różnych kryteriów (Ocena, Rok wydania itp).
+&nbsp; - Przeglądanie Zasobów: Użytkownicy mogą przeglądać listę dostępnych gier.
+&nbsp; - Dodawanie Nowych Pozycji: Możliwość dodawania nowych gier do bazy danych.
+&nbsp; - Edycja Istniejących Pozycji: Użytkownicy mogą aktualizować informacje o grach.
+&nbsp; - Usuwanie Pozycji: Funkcja umożliwiająca usuwanie gier z bazy danych.
+&nbsp; - Sortowanie: Możliwość sortowania gier na podstawie różnych kryteriów (Ocena, Rok wydania itp).
 
 ## Zaimplementowane-Funkcjonalności
 1. Interfejs graficzny aplikacji (NewJFrame.java):
