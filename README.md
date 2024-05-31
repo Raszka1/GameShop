@@ -2,7 +2,7 @@
 ## Nazwa Projektu: Zarządzanie książkami
 
 - [Opis Projektu](##Opis-Projektu)
-- [Spis Funkcjonalności](#Spis-Funkcjonalności)
+- [Spis Funkcjonalności](##Spis-Funkcjonalności)
     - [Zaimplementowane Funkcjonalności](##Zaimplementowane-Funkcjonalności)
 - [Instrukcje Obsługi](#Instrukcje-Obsługi)
 - [Uruchomienie Aplikacji](#Uruchomienie-Aplikacji)
@@ -10,7 +10,7 @@
 ## Opis-Projektu
 Projekt GameShop to aplikacja desktopowa stworzona w Apache NetBeans, umożliwiająca zarządzanie zbiorem gier. Aplikacja jest zaprojektowana tak, aby ułatwić użytkownikom przeglądanie, dodawanie, edytowanie oraz usuwanie danych związanych z grami.
 
-# Spis-Funkcjonalności
+## Spis-Funkcjonalności
 - Przeglądanie Zasobów: Użytkownicy mogą przeglądać listę dostępnych gier.
 - Dodawanie Nowych Pozycji: Możliwość dodawania nowych gier do bazy danych.
 - Edycja Istniejących Pozycji: Użytkownicy mogą aktualizować informacje o grach.
