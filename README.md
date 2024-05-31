@@ -36,7 +36,7 @@ Przyciski w dialogu obsługują zdarzenia kliknięcia, umożliwiając dodawanie 
 
 4. Projekt Maven (Mavenproject4.java):
 
-    - Plik, który prawdopodobnie zawiera dodatkową konfigurację dla projektu Maven, lecz treść tego pliku nie była dostępna z powodu ograniczeń długości odpowiedzi.
+    - Plik, który zawiera dodatkową konfigurację dla projektu Maven oraz wykreowaną baze gier.
 
 
 
@@ -44,7 +44,7 @@ Przyciski w dialogu obsługują zdarzenia kliknięcia, umożliwiając dodawanie 
 Aplikacja została zaprojektowana w środowisku Apache NetBeans i korzysta z Mavena jako systemu zarządzania projektami i zależnościami.
 
 ## Uruchomienie-Aplikacji
-1. Ściągnij i zainstaluj Apache NetBeans (jeżeli jeszcze nie posiadasz).
+1. Ściągnij i zainstaluj Apache NetBeans
 
 2. Klonuj repozytorium: <br>
 ``` git clone https://github.com/Raszka1/GameShop.git```
