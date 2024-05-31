@@ -3,6 +3,7 @@
 
 - [Opis Projektu](##Opis-Projektu)
 - [Spis Funkcjonalności](#Spis-Funkcjonalności)
+- [Zaimplementowane Funkcjonalności](##Zaimplementowane-Funkcjonalności)
 - [Instrukcje Obsługi](#Instrukcje-Obsługi)
 - [Uruchomienie Aplikacji](#Uruchomienie-Aplikacji)
 
