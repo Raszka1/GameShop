@@ -27,8 +27,8 @@ Aplikacja została zaprojektowana w środowisku Apache NetBeans i korzysta z Mav
 
 3. Otwórz projekt w NetBeans:
 
-Wybierz plik > Otwórz projekt i znajdź pobrany projekt.
+&nbsp; Wybierz plik > Otwórz projekt i znajdź pobrany projekt.
 
 4. Uruchom projekt:
 
-W NetBeans kliknij prawym przyciskiem myszy na projekt w Projects i wybierz Run.
+&nbsp; W NetBeans kliknij prawym przyciskiem myszy na projekt w Projects i wybierz Run.
