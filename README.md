@@ -31,4 +31,4 @@ Aplikacja została zaprojektowana w środowisku Apache NetBeans i korzysta z Mav
 
 4. Uruchom projekt:
 
-&nbsp; &nbsp; W NetBeans kliknij prawym przyciskiem myszy na projekt w `Projects` i wybierz `Run.`
+&nbsp; &nbsp; W NetBeans kliknij prawym przyciskiem myszy na projekt w `Projects` i wybierz `Run`
