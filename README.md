@@ -25,7 +25,7 @@ Projekt GameShop to aplikacja desktopowa stworzona w Apache NetBeans, umożliwia
 
 2. Dialog gry (GameDialog.java):
 
-    - Okno dialogowe, które umożliwia dodawanie nowej gry do systemu, z możliwością wprowadzenia takich informacji jak<br> tytuł, platforma, rok wydania, cena, producent i ocena gry.<br>
+    - Okno dialogowe, które umożliwia dodawanie nowej gry do systemu, z możliwością wprowadzenia takich informacji jak:<br> tytuł, platforma, rok wydania, cena, producent i ocena gry.<br>
 Przyciski w dialogu obsługują zdarzenia kliknięcia, umożliwiając dodawanie gier do bazy danych aplikacji.
 3. Logika aplikacji (Gra.java):
 
