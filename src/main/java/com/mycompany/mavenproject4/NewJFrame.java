@@ -31,7 +31,11 @@ public final class NewJFrame extends javax.swing.JFrame {
     
     private boolean ascending = true;
 
-    
+    //Tutaj jest start naszej aplikacji
+    //W tym miejscu będziemy używać funkcji które są potrzebne na samym początku jak np:
+    //initComponents = inicjuje komponenty takie jak: przyciski, text itp
+    //setupTable = Tworzy nam tabele z nazwami kolumn (pusta tabele)
+    //displayGamesInTable = Wypełnia nam wcześniej stworzą tabele o nasze gry
     public NewJFrame() {
         setTitle("GameShop");
         //Inicjowanie i ładowanie danych  
@@ -53,49 +57,55 @@ public final class NewJFrame extends javax.swing.JFrame {
     model.addColumn("Cena");
     model.addColumn("Producent");
     model.addColumn("Ocena");
+    //Z naszej pustej ustawionej tabeli robimy model który przyda nam się potem
     TbShowGame.setModel(model);
+    //Dodatkowo juz po ustawieniu nazw naszych kolumn dodajemy że można je sortować naciskając w headery 
     setupTableSorting();
     }
     
-    //Podpięcie pozyskanych danych do odpowiednich pól w tabeli
+    //wypełnienie naszej tabeli danymi które pobieramy z pliku Mavenproject4 za pomocą metody ,,getBazaDanych(),,
     public void displayGamesInTable() {
         model = (DefaultTableModel) TbShowGame.getModel();
         model.setRowCount(0);  // Usuwa wszystkie istniejące wiersze, zapewniając czystą tabelę do załadowania danych
 
         List<Gra> gry = Mavenproject4.getBazaDanych(); // Pobieranie danych
         for (Gra gra : gry) {
-            Object[] row = new Object[6];  // Tablica obiektów, każdy obiekt odpowiada kolumnie w tabeli
+            Object[] row = new Object[6];  //każdy obiekt (wartość) odpowiada kolumnie w tabeli
             row[0] = gra.getTytul();
             row[1] = gra.getPlatforma();
             row[2] = gra.getRokWydania();
             row[3] = gra.getCena() + " zł";
             row[4] = gra.getProducent();
             row[5] = gra.getOcena();
-
-            model.addRow(row);  // Dodanie wiersza do modelu tabeli
+            //Dodajemy wiersze do naszego wcześniej zrobionego modelu tabeli
+            model.addRow(row);
             }
     }
            
     //Metoda do odświeżania tabeli po dodaniu nowego rekordu
     public void refreshTable() {
-    // Pobranie modelu tabeli
-    DefaultTableModel model = (DefaultTableModel) TbShowGame.getModel();
-    model.setRowCount(0); // Usunięcie starych danych
+        // Pobranie modelu tabeli
+        DefaultTableModel model = (DefaultTableModel) TbShowGame.getModel();
+        model.setRowCount(0); // Usunięcie starych danych
 
-    // Załadowanie nowych danych
-    List<Gra> gry = Mavenproject4.getBazaDanych();
-    for (Gra gra : gry) {
+        // Załadowanie nowych danych
+        List<Gra> gry = Mavenproject4.getBazaDanych();
+
+        //Pętla for która oznacza że:
+        //Każdy obiekt gra (który jest zrobiony za bazie klasy Gra) jest dodany (addRow) razem z jego wartościami (używamy tu getterów aby pobrać X dane tytuł, ocene itp)
+        for (Gra gra : gry) {
         model.addRow(new Object[]{gra.getTytul(), gra.getPlatforma(), gra.getRokWydania(), gra.getCena(), gra.getProducent(), gra.getOcena()});
         }
     }
     
-    //Asynchroniczne pobieranie danych
      
     //Sortowanie za pomocą oceny
     private void toggleSortOcena() {
+        //Pobieranie wszystkich danych z kolumny Ocena i robienie z niej zmiennej ,,sorter,,
         TableRowSorter<TableModel> sorter = (TableRowSorter<TableModel>) TbShowGame.getRowSorter();
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
         int columnIndexToSort = 5; // Index of the column to sort (Ocena)
+        //Dodajemy 2 możliwości, sortowanie od największej do najmniejszej lub na odwrót
         if (ascending) {
             sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
         } else {
@@ -107,6 +117,7 @@ public final class NewJFrame extends javax.swing.JFrame {
     }
     
      //Sortowanie za pomocą oceny
+     //Analogicznie do Sortowania po ocenie
     private void toggleSortRoku() {
         TableRowSorter<TableModel> sorter = (TableRowSorter<TableModel>) TbShowGame.getRowSorter();
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
@@ -121,6 +132,7 @@ public final class NewJFrame extends javax.swing.JFrame {
         sorter.sort();
     }
     
+    //Ustawienie że można sortować kolumny 
     private void setupTableSorting() {
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
         TbShowGame.setRowSorter(sorter);
@@ -131,24 +143,54 @@ public final class NewJFrame extends javax.swing.JFrame {
             }
         });
     }
+
+     //Zdarzenie BtnAdd_Click który wywołuje funkcje: openAddGameDialog
+     private void BtnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAddMouseClicked
+        openAddGameDialog();
+    }
+
+    //Zdarzenie BtnDelete_Click który wywołuje funkcje: deleteSelectedGame
+    private void DeleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteButtonMouseClicked
+        deleteSelectedGame();
+    }
     
+    //Funkcja która wyświetli nam małe okno popup ze szczegółami naszej wybranej na tabeli gry
     private void showGameDetails() {
+        //Inicjalizacja która gra została zaznaczona
         int selectedRow = TbShowGame.getSelectedRow();
+        //Warunek sprawdzający czy zostaąła zaznaczona pozycja
         if (selectedRow >= 0) {
+            //Tworzenie modelu ,,details,, który składa się z Tytułu, Platformy itp
+            //Model to połączenie stringów które wyglądają: "Przykłąd" + pobieranie wartości z wybranych kol. od 0-5
             String details = "Tytuł: " + TbShowGame.getValueAt(selectedRow, 0)
                 + "\nPlatforma: " + TbShowGame.getValueAt(selectedRow, 1)
                 + "\nRok Wydania: " + TbShowGame.getValueAt(selectedRow, 2)
                 + "\nCena: " + TbShowGame.getValueAt(selectedRow, 3)
                 + "\nProducent: " + TbShowGame.getValueAt(selectedRow, 4)
                 + "\nOcena: " + TbShowGame.getValueAt(selectedRow, 5);
+            //Używanie wgranej funkcji showMessageDialog która w ()  przyjmuje:
+            //details = Nasz zaprojektowany model co tam ma być
+            //title = Tytuł naszego okienka popup 
+            //JOptionPane.INFORMATION_MESSAGE = Informacje jakiego typu jest to okno (ostrzegawcze, informacyjne itp)
             JOptionPane.showMessageDialog(this, details, "Szczegóły Gry", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+        }
+        //Jesli nie została zaznaczona żadna pozycja 
+        else {
+            //Jeśli użytkownika nie zaznaczy pozycji w tabeli wyskoczy okno error z odpowiednią wiadomością i tytułem
             JOptionPane.showMessageDialog(this, "Proszę zaznaczyć rekord.", "Błąd", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+
+
+    // <editor-fold desc="Big block of code">
+
+
+
     
+    //region Wygenerowany kod (nie istotny)
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
@@ -328,15 +370,7 @@ public final class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Zdarzenie BtnAdd_Click
-    private void BtnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAddMouseClicked
-        openAddGameDialog();
-    }//GEN-LAST:event_BtnAddMouseClicked
-
-    //Zdarzenie BtnDelete_Click
-    private void DeleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteButtonMouseClicked
-        deleteSelectedGame();
-    }//GEN-LAST:event_DeleteButtonMouseClicked
+   
 
     //Zdarzenie BtnSort_Click - Ocena
     private void BtnSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSortMouseClicked
@@ -351,7 +385,10 @@ public final class NewJFrame extends javax.swing.JFrame {
         showGameDetails();
     }//GEN-LAST:event_BtnViewDetailsMouseClicked
 
-    //Funkcja która otwiera okno Popup zaprojektowane na podstawei pliku GameDialog
+    // </editor-fold>
+
+    //Funkcja która otwiera okno Popup zaprojektowane na podstawie pliku GameDialog
+    //GameDialog to importowany model okna popup który ułatwi programowanie 
     private void openAddGameDialog() {
         GameDialog gameDialog = new GameDialog(this);
         gameDialog.addWindowListener(new WindowAdapter() {
@@ -365,27 +402,29 @@ public final class NewJFrame extends javax.swing.JFrame {
     
     //Funkcja do usuwania zaznaczonych pozycji z tabelii
     private void deleteSelectedGame() {
+        //do zmiennej row przypisujemy zaznaczoną pozycję (getSelectedRow) która jest w tabeli (TbShowGame)
         int row = TbShowGame.getSelectedRow();
+        //Prosta zależność która chroni nas aby zaznaczonych pozycji było wiecej niż 0
         if (row >= 0) {
+            //Pobieramy dane naszej gry (tytuł) aby wiedzieć jaka gra znajduje się w zaznaczonym polu
             String gameTitle = model.getValueAt(row, 0).toString(); 
 
+            //Korzystamy z funkcji usunZBazy która przyjmuje ,,gameTitle,, gry aby się wykonać, oraz która znajduje się w pliku Mavenproject4 
             // Usunięcie z bazy danych
             Mavenproject4.usunZBazy(gameTitle);
 
+            //Poza usunięciem z naszej bazy danych trzeba też usunąć ją z tabeli
             // Usunięcie z modelu tabeli
             model.removeRow(row);
         } 
+        //Jeśli ktoś nie wybrał żandej pozycji 
         else {
             JOptionPane.showMessageDialog(this, "Proszę wybrać grę do usunięcia.");
         }
     }
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        // <editor-fold desc="block of code">
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -402,18 +441,14 @@ public final class NewJFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        // </editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewJFrame().setVisible(true);
                 
                 
             }
-        });
-        
-       
-        /* Create and display the form */
-       
+        });     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
